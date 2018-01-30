@@ -1,0 +1,12 @@
+﻿{
+  "ResourceGroup": "apulliam-cosmos",
+  "CosmosDbName": "apulliam-cosmos-test",
+  "Regions": [ "east us", "west us", "southcentral us" ],
+  "DatabaseName": "db",
+  "CollectionName": "test",
+  "CollectionThroughput": 1000,
+  "ShouldCleanupOnStart": false,
+  "ShouldCleanupOnFinish": false,
+  "PartitionKey": "/partitionKey"
+
+}  
