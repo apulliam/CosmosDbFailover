@@ -90,7 +90,7 @@
 
             var replicaClients = new List<FailoverTestClient>();
 
-            var defaultClient = await FailoverTestClient.GetFailoverTestClient(cosmosDbEndpoint, _cosmosDbAccount.MasterKey, _config.DatabaseName, _config.CollectionName, _config.PartitionKey, _config.CollectionThroughput);
+            var defaultClient = await FailoverTestClient.GetFailoverTestClient(cosmosDbEndpoint, _cosmosDbAccount.MasterKey, _config.DatabaseName, _config.CollectionName,  _config.CollectionThroughput);
 
             
             // Skip the first region, which is the primary region, to get replica regions 
@@ -99,7 +99,7 @@
             // Create DocumentDb API client in each replica region
             foreach (var replicaRegion in replicaRegions)
             {
-                var replicaClient = await FailoverTestClient.GetFailoverTestClient(cosmosDbEndpoint, _cosmosDbAccount.MasterKey, _config.DatabaseName, _config.CollectionName, _config.PartitionKey, _config.CollectionThroughput, new List<string>() { replicaRegion.LocationName });
+                var replicaClient = await FailoverTestClient.GetFailoverTestClient(cosmosDbEndpoint, _cosmosDbAccount.MasterKey, _config.DatabaseName, _config.CollectionName, _config.CollectionThroughput, new List<string>() { replicaRegion.LocationName });
                 replicaClients.Add(replicaClient);
             }
 
