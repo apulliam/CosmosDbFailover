@@ -81,8 +81,7 @@
                 Console.WriteLine($"\t{region.LocationName}");
             Console.WriteLine($"Collection: {_config.DatabaseName}.{_config.CollectionName}");
             Console.WriteLine($"RU's: {_config.CollectionThroughput}");
-            Console.WriteLine($"Partition key: {_config.PartitionKey}");
-   
+            
 
             Console.WriteLine("Hit Enter to start failover");
             Console.WriteLine("Hit Esc to exit test");

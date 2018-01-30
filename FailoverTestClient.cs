@@ -54,13 +54,13 @@ namespace CosmosDbBenchmark
             _client = DocumentDbUtility.GetDocumentDbClient(cosmosDbEndpoint, authorizationKey, regions);
         }
 
-        public static async Task<FailoverTestClient> GetFailoverTestClient(Uri cosmosDbEndpoint, string authorizationKey, string databaseName, string collectionName, string partitionKey, int collectionThroughput, IEnumerable<string> regions = null, bool cleanupOnStart = false)
+        public static async Task<FailoverTestClient> GetFailoverTestClient(Uri cosmosDbEndpoint, string authorizationKey, string databaseName, string collectionName,  int collectionThroughput, IEnumerable<string> regions = null, bool cleanupOnStart = false)
         {
             var client = new FailoverTestClient(cosmosDbEndpoint, authorizationKey, regions);
             client._databaseName = databaseName;
             client._collectionName = collectionName;
            
-            await client.DocumentClient.GetOrCreateCollection(client._databaseName, client._collectionName, collectionThroughput, partitionKey, cleanupOnStart);
+            await client.DocumentClient.GetOrCreateCollection(client._databaseName, client._collectionName, collectionThroughput, "/partitionKey", cleanupOnStart);
             client._databaseUri = UriFactory.CreateDatabaseUri(client._databaseName);
             client._collectionUri = UriFactory.CreateDocumentCollectionUri(client._databaseName, client._collectionName);
 
